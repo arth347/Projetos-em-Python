@@ -3,7 +3,11 @@ def jogos():
     import jadivinhacao
     import jforca
 
-    os.system("mode con:cols=36 lines=40")
+    os.system('color 0f')
+
+    t = '-----------------------------------'
+
+    os.system("mode con:cols=36 lines=9")
 
     print('***********************************')
     print('         Jogos em python')
@@ -14,19 +18,13 @@ def jogos():
         print('| adivinhacao | forca |')
         print('***********************************')
         jogo = input('Selecione o jogo:\nR:')
+        print(t)
 
         if jogo == 'adivinhacao':
-            print('***********************************')
-            print('------------------------------------')
-            print('Jogo Selecionado com Sucesso!')
-            print('------------------------------------')
             jadivinhacao.jogo()
             break
         elif jogo == 'forca':
-            print('***********************************')
-            print('------------------------------------')
-            print('Jogo Selecionado com Sucesso!')
-            print('------------------------------------')
+            
             jforca.jogo()
             break
         else:
