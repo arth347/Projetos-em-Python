@@ -1,6 +1,7 @@
 def jogo():
     
     #VARIAVEIS
+    acertou_tudo = 0
     enforcado = False
     acertou = False
     posicao = 0
@@ -24,7 +25,7 @@ def jogo():
     
     letras_secretas = transforme_palavra_secreta_em_letras_secretas(palavra_secreta)
 
-    while enforcado == False and acertou == False:
+    while enforcado == False and acertou == False and acertou_tudo == 0:
         chute = pede_o_chute(letras_secretas)
 
         if erros == 0:
@@ -48,7 +49,10 @@ def jogo():
         elif erros == 6:
             print(erro6)
             print(t)
-        if chute in palavra_secreta:
+
+        if chute == palavra_secreta:
+            acertou_tudo += 1
+        elif chute in palavra_secreta:
             for letra in palavra_secreta:
                 if chute == letra:
                     letras_secretas[posicao] = letra.upper()
@@ -75,11 +79,10 @@ def jogo():
             elif erros == 6:
                 print(erro6)
                 print(t)
-               
         acertou = '_' not in letras_secretas
         enforcado = erros == 6  
         posicao *= 0 
-    if acertou == True: 
+    if acertou == True or acertou_tudo == 1: 
         print('         Você Ganhou !!! \n\n       a palavra era:',palavra_secreta,'\n')
         if palavra_secreta == 'shrek':
             inverta_a_cor_do_cmd()
@@ -124,7 +127,7 @@ def jogo():
                 gigi_img = linhas[contagem]
                 print(gigi_img)
                 contagem += 1
-                if contagem < 91:
+                if contagem < 61:
                     continue
                 else:
                     break
@@ -135,6 +138,8 @@ def jogo():
             print('=========================================================================================================================================================================================================')
             
         
+        elif palavra_secreta =='era-uma-vez-um-pantano-distante-onde-vivia-um-ogro-chamado-shrek-de-repente-seu-sossego-é-interrompido-pela-invasão-de-personagens-de-contos-de-fadas-que-foram-banidos-de-seu-reino-pelo-maldoso-lorde-farquaad-determinado-a-salvar-o-lar-das-pobres-criaturas-e-tambem-o-dele-shrek-faz-um-acordo-com-farquaad-e-parte-para-resgatar-a-princesa-fiona-resgatar-a-princesa-pode-nao-ser-nada-comparado-com-seu-segredo-profundo-e-sombrio':
+            mude_o_tamanho_da_janela_para_200x200()
             
     else:
         print('   Você foi enforcado e perdeu ;-; \n\n       a palavra era:',palavra_secreta,'\n')
@@ -150,6 +155,12 @@ def mude_o_tamanho_da_janela_para_36x10():
     import os
     
     os.system("mode con: cols=36 lines=10")
+    
+# ESSA FUNÇÃO MUDA O TAMANHO DA JANELA PARA 200X10
+def mude_o_tamanho_da_janela_para_200x200():
+    import os
+    
+    os.system("mode con: cols=200 lines=200")
 
 #  ESSA FUNÇÃO MOSTRA A MENSAGEM INICIAL
 def diga_mensagem_inicial(erro0,t):
@@ -209,7 +220,7 @@ def inverta_a_cor_do_cmd():
 #ESSA FUNÇÃO ALMENTA A JANELA PRA CABER O NEGOCIO GRANDE DO GIGIODC
 def mude_o_tamanho_da_janela_para_caber_gigiodc():
     import os
-    os.system('mode con: cols=201 lines=94')
+    os.system('mode con: cols=201 lines=64')
 
 #  FIM
 if(__name__ == '__main__'):
